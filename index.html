@@ -27,36 +27,6 @@
     </style>
   </head>
   <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
-    <script>
-      // URL of the PDF to load
-      var url = 'https://designer-hyeri.github.io/Portfolio.pdf';
-
-      // PDF.js options
-      var options = {
-        // Set the initial zoom level to fit the page
-        scale: 'page-fit',
-        // Suppress the "Download" button
-        download: false,
-        // Suppress the "Open with" menu
-        openInBrowser: false
-      };
-
-      // Load the PDF and render the first page
-      pdfjsLib.getDocument(url).promise.then(function(pdf) {
-        pdf.getPage(1).then(function(page) {
-          var canvas = document.createElement('canvas');
-          var viewport = page.getViewport({scale: options.scale});
-          var context = canvas.getContext('2d');
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
-          canvas.style.display = 'block';
-          canvas.style.width = '100%';
-          canvas.style.height = '100%';
-          document.body.appendChild(canvas);
-          page.render({canvasContext: context, viewport: viewport});
-        });
-      });
-    </script>
+    <embed src="https://designer-hyeri.github.io/Portfolio.pdf" type="application/pdf" width="100%" height="100%" />
   </body>
 </html>
