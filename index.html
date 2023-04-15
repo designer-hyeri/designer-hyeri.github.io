@@ -2,27 +2,61 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>포트폴리오_김혜리</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      iframe {
-        width: 100%;
-        height: 100vh;
-      }
-    </style>
-    <!-- Google Analytics Code -->
+    <title>김혜리_포트폴리오</title>
+    <!-- Google Analytics code -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1Y2N7R1D8"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-X1Y2N7R1D8');
     </script>
+    <!-- Styles -->
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </head>
   <body>
-    <iframe src="Portfolio.pdf" frameborder="0"></iframe>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+    <script>
+      // URL of the PDF to load
+      var url = 'Portfolio.pdf';
+
+      // PDF.js options
+      var options = {
+        // Set the initial zoom level to fit the page
+        scale: 'page-fit',
+        // Suppress the "Download" button
+        download: false,
+        // Suppress the "Open with" menu
+        openInBrowser: false
+      };
+
+      // Load the PDF and render the first page
+      pdfjsLib.getDocument(url).promise.then(function(pdf) {
+        pdf.getPage(1).then(function(page) {
+          var canvas = document.createElement('canvas');
+          var viewport = page.getViewport({scale: options.scale});
+          var context = canvas.getContext('2d');
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          canvas.style.display = 'block';
+          canvas.style.width = '100%';
+          canvas.style.height = '100%';
+          document.body.appendChild(canvas);
+          page.render({canvasContext: context, viewport: viewport});
+        });
+      });
+    </script>
   </body>
 </html>
