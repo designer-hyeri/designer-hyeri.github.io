@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <meta charset="UTF-8">
+    <title>PDF Embedding Example</title>
+    <!-- Google Analytics code -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1Y2N7R1D8"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-X1Y2N7R1D8');
     </script>
-    <!-- End Google Analytics -->
+    <!-- Styles -->
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
   </head>
   <body>
-    ...
+    <iframe src="Portfolio.pdf"></iframe>
   </body>
 </html>
