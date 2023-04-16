@@ -20,18 +20,19 @@
         height: 100%;
       }
       #pdf-container {
-        height: 100%;
-        overflow: auto;
-      }
-      #pdf-object {
-        height: 100%;
         width: 100%;
+        height: 100vh;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling:touch;
+      }
+      #pdf {
+        width: 100%; !important;
       }
     </style>
   </head>
   <body>
     <div id="pdf-container">
-      <object id="pdf-object" data="https://designer-hyeri.github.io/Portfolio.pdf" type="application/pdf"></object>
+      <iframe src="https://designer-hyeri.github.io/Portfolio.pdf" id="pdf"></iframe>
     </div>
   </body>
 </html>
