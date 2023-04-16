@@ -1,27 +1,197 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
+<head>
     <title>김혜리_포트폴리오</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
     <!-- Google Analytics code -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1Y2N7R1D8"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-X1Y2N7R1D8');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-X1Y2N7R1D8');
     </script>
+
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-      }
+        html, body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* 목차 버튼 */
+        .image-slider {
+            background: #555;
+            display: flex;
+            flex-direction: column;
+            padding:10px;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-slider img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .wrapper-slide03 {
+            position: relative;
+        }
+
+        .wrapper-slide03>a{
+            display: inline-block;
+            position: absolute;
+        }
+
+        .wrapper-slide03>[class*="txt"]{
+            top:77.6%;
+            left: 2.5%;
+            width:21.87%;
+            height:2.22%;
+        }
+
+        .wrapper-slide03>.slide15-txt{
+            top:81.3%;
+        }
+
+        .wrapper-slide03>.slide25-txt{
+            top:85%;
+        }
+
+        .wrapper-slide03>.slide35-txt{
+            top:88.7%;
+        }
+
+        .wrapper-slide03>.slide42-txt{
+            top:92.4%;
+        }
+
+        .wrapper-slide03>[class*="img"]{
+            top:0;
+            left: 26.87%;
+            width:36.5%;
+            height:50%;
+        }
+
+        .wrapper-slide03>.slide15-img{
+            left:63.43%;
+        }
+
+        .wrapper-slide03>.slide25-img{
+            top:50%;
+        }
+
+        .wrapper-slide03>.slide35-img{
+            top:50%;
+            left:63.43%;
+        }
+
+
+        /* 다운로드버튼 */
+        .download-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #000000CC;
+            border: 1px solid #F1F1F140;
+            color: #F1F1F1;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            cursor: pointer;
+            transition: opacity 0.3s ease-in;
+        }
+
+        .download-button:hover{
+            background-color: #000000;
+        }
+
+
+        .download-button.show {
+            display: inline-block;
+            opacity: 1;
+        }
+
+
+        /* 태블릿 및 모바일용 스타일 */
+        @media screen and (max-width: 768px) {
+            .download-button {
+                position: fixed;
+                left: 50%;
+                transform: translateX(-50%);  
+                bottom: 20px;
+                top: unset;
+                right: unset;
+            }
+            .image-slider {
+                padding-bottom: 70px;
+            }
+        }
+
+
+
     </style>
-  </head>
-  <body>
-    <iframe src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://github.com/designer-hyeri/designer-hyeri.github.io/raw/main/Portfolio.pdf" frameborder="0">
-  </body>
+</head>
+<body>
+    
+    
+    <!-- 이미지 슬라이드 영역 -->
+    <div class="image-slider">
+        <img src="slide/01.png">
+        <img src="slide/02.png">
+        <div class="wrapper-slide03">
+            <img src="slide/03.png">
+            <a href="#slide04" class="slide04-txt"></a>
+            <a href="#slide04" class="slide04-img"></a>
+            <a href="#slide15" class="slide15-txt"></a>
+            <a href="#slide15" class="slide15-img"></a>
+            <a href="#slide25" class="slide25-txt"></a>
+            <a href="#slide25" class="slide25-img"></a>
+            <a href="#slide35" class="slide35-txt"></a>
+            <a href="#slide35" class="slide35-img"></a>
+            <a href="#slide42" class="slide42-txt"></a>
+        </div>
+    </div>
+
+    <!-- PDF 다운로드 버튼 -->
+    <a class="download-button" href="https://github.com/designer-hyeri/designer-hyeri.github.io/raw/main/Portfolio.pdf" download="김혜리_포트폴리오.pdf">PDF 다운로드</a>
+    
+ 
+    <script>
+        // 04.png부터 42.png까지 이미지 생성
+        for (let i = 4; i <= 42; i++) {
+            const img = document.createElement('img');
+            img.src = `slide/${i < 10 ? '0' : ''}${i}.png`; // 이미지 번호가 10 미만이면 0을 붙여줌
+            img.id = `slide${i < 10 ? '0' : ''}${i}`; // 이미지 번호가 10 미만이면 0을 붙여줌
+            document.querySelector('.image-slider').appendChild(img);
+        }
+
+        // 다운로드 버튼 효과
+        let timeout = null;
+
+        window.addEventListener('scroll', function() {
+        clearTimeout(timeout);
+        const downloadButton = document.querySelector('.download-button');
+        downloadButton.style.opacity = 0;
+        timeout = setTimeout(function() {
+            downloadButton.style.opacity = 1;
+        }, 500);
+        });
+
+    </script>
+    
+</body>
 </html>
